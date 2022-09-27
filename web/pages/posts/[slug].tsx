@@ -18,7 +18,7 @@ interface FormInput {
   comment: string;
 }
 
-function Post({ post }: Props) {
+export default function Post({ post }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
@@ -193,14 +193,10 @@ function Post({ post }: Props) {
   );
 }
 
-export default Post;
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const query = `*[_type=='post']{
         _id,
-        slug {
-            current
-        }
+        slug { current }
       }`;
 
   const posts = await sanityClient.fetch(query);
