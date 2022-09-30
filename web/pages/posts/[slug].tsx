@@ -18,7 +18,7 @@ interface FormInput {
   comment: string;
 }
 
-export default function Post({ post }: Props) {
+export default function PostDetails({ post }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
