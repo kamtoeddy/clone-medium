@@ -18,7 +18,7 @@ interface FormInput {
   comment: string;
 }
 
-export default function Post({ post }: Props) {
+export default function PostDetails({ post }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
@@ -103,7 +103,7 @@ export default function Post({ post }: Props) {
       {isSubmitted ? (
         <div className="flex flex-col p-10 my-10 text-white max-w-2xl mx-auto bg-yellow-500">
           <h3 className="text-3xl font-bold">Thank you for your feedback</h3>
-          <p>Once approved, you comment will appear down below</p>
+          <p>Once approved, your comment will appear down below</p>
         </div>
       ) : (
         <form
