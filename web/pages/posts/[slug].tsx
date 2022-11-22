@@ -56,26 +56,13 @@ export default function PostDetails({ post }: Props) {
       />
 
       <article className="max-w-3xl mx-auto p-5">
-        <h1 className="text-3xl mt-10">{post.title}</h1>
+        <h1 className="text-3xl mt-0 md:mt-10">{post.title}</h1>
         <h2 className="text-xl font-light text-gray-500 my-1">
           {post.description}
         </h2>
 
-        <div className="flex items-center space-x-2">
-          <img
-            src={urlFor(post.author.image).url()}
-            className="h-10 w-10 rounded-full"
-          />
-
-          <p className="font-extralight">
-            Blog post by{" "}
-            <span className="text-green-600">{post.author.name}</span> -
-            Published at {new Date(post._createdAt).toLocaleString()}
-          </p>
-        </div>
-
         <PortableText
-          className="mt-10"
+          className="my-5"
           dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
           content={post.body}
@@ -96,6 +83,23 @@ export default function PostDetails({ post }: Props) {
             ),
           }}
         />
+
+        <div className="flex items-center space-x-2">
+          <img
+            src={urlFor(post.author.image).url()}
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="font-extralight flex flex-col">
+            <div>
+              Blog post by{" "}
+              <span className="text-green-600 font-bold">
+                {post.author.name}
+              </span>
+            </div>
+            <div>{new Date(post._createdAt).toLocaleString()}</div>
+          </div>
+        </div>
       </article>
 
       <hr className="max-w-lg my-5 mx-auto border border-yellow-500" />
